@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 
+
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
@@ -16,7 +17,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.8",
-    packages=find_packages(),
+    packages=['lyric_whisper', 'lyric_whisper.model'],
     install_requires=requirements,
     include_package_data=True
 )
