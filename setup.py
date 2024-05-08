@@ -17,7 +17,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.8",
-    packages=['lyric_whisper', 'lyric_whisper.model'],
+    packages=find_packages(),
     install_requires=requirements,
     include_package_data=True
 )
