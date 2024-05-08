@@ -1,8 +1,6 @@
 [project]
 name = "lyrics"
-
-[project]
-dynamic = ["1.0"]
+dynamic = ["version"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
