@@ -1,7 +1,7 @@
 import numpy as np
 from huggingface_hub import hf_hub_download
 from whisper import load_model, transcribe
-
+import torch 
 
 class Whisper:
     """Class to transcribe audio to text using the Whisper model.
@@ -15,19 +15,19 @@ class Whisper:
         """
 
         model_path = hf_hub_download(
-            repo_id="distil-whisper/distil-large-v3-openai", filename="model.bin")
+            repo_id=model_id, filename="model.bin")
         self.model = load_model(model_path)
 
-    def transcribe(self, audio_path: str, language: str = None) -> tuple:
+    def transcribe(self, audio: str | torch.Tensor, language: str = None) -> tuple:
         """Method to transcribe audio to text using the Whisper model.
 
-        :param audio_path: the path to the audio file
-        :type audio_path: str
+        :param audio: the path to the audio file or the audio tensor
+        :type audio: str | torch.Tensor
         :return: the transcribed text with the average log probability
         :rtype: tuple
         """
 
-        pred_out = transcribe(self.model, audio=audio_path, language=language)
+        pred_out = transcribe(self.model, audio=audio, language=language)
 
         text = ""
         avg_logprob = 0
